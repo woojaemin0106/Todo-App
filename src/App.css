@@ -43,13 +43,113 @@
 
 .container {
   width: 400px;
-  margin: 50px auto;
+  margin: 60px auto;
+  padding: 25px 30px;
   background-color: #fdfdfd;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: "Pretendard", "Noto Sans KR", sans-serif;
+  transition: all 0.3s ease;
+}
+ul {
+  list-style: none;
+  font-size: 30px;
+  padding: 0;
+}
+li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f8f9fa;
+  margin: 8px 0;
+  padding: 10px 12px;
+  border-radius: 8px;
 }
 .header {
   text-align: center;
   color: #333;
+}
+input {
+  padding: 10px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+  transition: border 0.2s ease;
+}
+hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 20px 0;
+}
+
+input:focus {
+  border-color: #64b5f6;
+  box-shadow: 0 0 0 2px rgba(100, 181, 246, 0.2);
+}
+.button {
+  margin-left: 8px;
+  padding: 10px 16px;
+  background-color: #42a5f5;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.button:hover {
+  background-color: #1e88e5;
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+li span {
+  flex-grow: 1;
+  margin-left: 10px;
+  font-size: 15px;
+}
+.pls-button,
+.del-button {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-left: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.pls-button {
+  background-color: #d9eeff;
+  color: #0d47a1;
+}
+
+.pls-button:hover {
+  background-color: #b3c7d8;
+}
+
+.del-button {
+  background-color: #dbd6d6;
+  color: #b71c1c;
+}
+
+.del-button:hover {
+  background-color: #d8c9c9;
+}
+
+.asdwaqe {
+  flex-grow: 1;
+  margin: 0 10px;
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.pls-button:active,
+.del-button:active {
+  transform: scale(0.95);
 }

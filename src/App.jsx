@@ -38,6 +38,7 @@ function TodoInput({ todoList, setTodoList }) {
         onChange={(event) => setInputValue(event.target.value)}
       />
       <button
+        className="button"
         onClick={() => {
           const newTodo = { id: Number(new Date()), content: inputValue };
           const newTodoList = [...todoList, newTodo];
@@ -76,7 +77,7 @@ function Todo({ todo, setTodoList }) {
     <li>
       <input
         type="checkbox"
-        checke={todo.completed}
+        checked={todo.completed}
         onChange={toggleComplete}
       />
       <span
@@ -89,11 +90,13 @@ function Todo({ todo, setTodoList }) {
       </span>
       {edit && (
         <input
+          className="asdwaqe"
           value={inputValue}
           onChange={(event) => setInputValue(event.target.value)}
         />
       )}
       <button
+        className="pls-button"
         onClick={() => {
           if (edit) {
             setTodoList((prev) =>
@@ -105,9 +108,10 @@ function Todo({ todo, setTodoList }) {
           setEdit(!edit);
         }}
       >
-        수정
+        {edit ? "저장" : "수정"}
       </button>
       <button
+        className="del-button"
         onClick={() => {
           setTodoList((prev) => {
             return prev.filter((el) => el.id !== todo.id);
