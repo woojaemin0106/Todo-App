@@ -3,23 +3,34 @@ import "./App.css";
 
 function App() {
   const [todoList, setTodoList] = useState([
-    { id: 0, content: "123" },
-    { id: 1, content: "코딩 공부하기" },
-    { id: 2, content: "잠 자기" },
+    { id: 0, content: "밥먹기", completed: false },
+    { id: 1, content: "코딩 공부하기", completed: false },
+    { id: 2, content: "잠 자기", completed: false },
   ]);
 
   return (
-    <>
+    <div className="container">
+      <h1 className="header"> todo app </h1>
       <TodoList todoList={todoList} setTodoList={setTodoList} />
       <hr />
       <TodoInput todoList={todoList} setTodoList={setTodoList} />
-    </>
+    </div>
   );
 }
 
 function TodoInput({ todoList, setTodoList }) {
   const [inputValue, setInputValue] = useState("");
+  const addTodo = () => {
+    if (inputValue.trim() === "") return;
 
+    const newTodo = {
+      id: Date.now(),
+      content: inputValue,
+      completed: false,
+    };
+    setTodoList([...todoList, newTodo]);
+    setInputValue("");
+  };
   return (
     <>
       <input
@@ -52,20 +63,46 @@ function TodoList({ todoList, setTodoList }) {
 
 function Todo({ todo, setTodoList }) {
   const [inputValue, setInputValue] = useState("");
+  const [edit, setEdit] = useState(false);
+  const toggleComplete = () => {
+    setTodoList((prev) =>
+      prev.map((el) =>
+        el.id === todo.id ? { ...el, completed: !el.completed } : el
+      )
+    );
+  };
+
   return (
     <li>
-      {todo.content}
       <input
-        value={inputValue}
-        onChange={(event) => setInputValue(event.target.value)}
+        type="checkbox"
+        checke={todo.completed}
+        onChange={toggleComplete}
       />
+      <span
+        style={{
+          textDecoration: todo.completed ? "line-through" : "none",
+          color: todo.completed ? "gray" : "black",
+        }}
+      >
+        {todo.content}
+      </span>
+      {edit && (
+        <input
+          value={inputValue}
+          onChange={(event) => setInputValue(event.target.value)}
+        />
+      )}
       <button
         onClick={() => {
-          setTodoList((prev) =>
-            prev.map((el) =>
-              el.id === todo.id ? { ...el, content: inputValue } : el
-            )
-          );
+          if (edit) {
+            setTodoList((prev) =>
+              prev.map((el) =>
+                el.id === todo.id ? { ...el, content: inputValue } : el
+              )
+            );
+          }
+          setEdit(!edit);
         }}
       >
         수정
